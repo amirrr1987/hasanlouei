@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>حسنلویی | آجیل و خشکبار عمده</title>
+  <meta name="description" content="تامین عمده آجیل و خشکبار با بالاترین کیفیت – مستقیم از مبدأ"/>
+  <meta name="keywords" content="آجیل عمده, خشکبار عمده, پسته, گردو, بادام, حسنلویی"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="./assets/scripts/tailwind.config.js"></script>
+  <link rel="stylesheet" href="./assets/styles/style.css">
+</head>
+
+<body>
+<div id="app">
+
+  <!-- ══════════════════════ NAVBAR ══════════════════════ -->
+  <nav class="fixed top-0 w-full z-50 transition-all duration-300"
+       :class="scrolled ? 'shadow-xl py-3' : 'bg-transparent py-5'"
+       :style="scrolled ? 'background:rgba(15,31,15,0.96); backdrop-filter:blur(12px);' : ''">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#C8972A,#E0B84A);">
+          <iconify-icon icon="mdi:leaf" style="color:#1A2E1A; font-size:1.3rem;"></iconify-icon>
+        </div>
+        <div>
+          <div class="text-cream font-black text-lg leading-none tracking-wide">حسنلویی</div>
+          <div class="text-cream/40 text-xs leading-none mt-0.5">آجیل و خشکبار عمده</div>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#products" class="nav-link">محصولات</a>
+        <a href="#why" class="nav-link">چرا ما</a>
+        <a href="#steps" class="nav-link">نحوه سفارش</a>
+        <a href="#contact" class="nav-link">تماس</a>
+      </div>
+
+      <a href="#contact" class="btn-primary text-sm py-2.5 px-5 hidden md:inline-flex">
+        سفارش عمده
+        <iconify-icon icon="mdi:arrow-left" style="font-size:1rem;"></iconify-icon>
+      </a>
+
+      <button @click="mobileOpen = !mobileOpen" class="md:hidden text-cream text-2xl p-1">
+        <iconify-icon :icon="mobileOpen ? 'mdi:close' : 'mdi:menu'"></iconify-icon>
+      </button>
+    </div>
+
+    <transition name="fade">
+      <div v-if="mobileOpen"
+           class="md:hidden px-6 pb-6 pt-4 flex flex-col gap-5 border-t"
+           style="background:rgba(15,31,15,0.98); border-color:rgba(200,151,42,0.2);">
+        <a href="#products"  @click="mobileOpen=false" class="nav-link">محصولات</a>
+        <a href="#why"       @click="mobileOpen=false" class="nav-link">چرا ما</a>
+        <a href="#steps"     @click="mobileOpen=false" class="nav-link">نحوه سفارش</a>
+        <a href="#contact"   @click="mobileOpen=false" class="nav-link">تماس</a>
+        <a href="#contact"   @click="mobileOpen=false" class="btn-primary self-start">سفارش عمده</a>
+      </div>
+    </transition>
+  </nav>
+
+  <!-- ══════════════════════ HERO ══════════════════════ -->
+  <section class="hero-bg min-h-screen flex items-center justify-center px-6 pt-24 pb-36">
+    <div class="hero-circle  w-[500px] h-[500px] -top-32 -right-32 opacity-70"></div>
+    <div class="hero-circle-2 w-80 h-80 bottom-32 -left-16"></div>
+    <div id="nuts-bg" class="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <p class="section-eyebrow hero-eyebrow mb-5" style="opacity:0;">تأمین‌کننده معتمد عمده‌فروشان ایران</p>
+
+      <h1 id="hero-title" class="text-cream font-black leading-tight mb-6" style="font-size:clamp(2.6rem,6.5vw,5rem); line-height:1.2; opacity:0;">
+        طبیعی‌ترین آجیل<br/>
+        <span style="color:#C8972A; font-family:'Playfair Display',serif; font-style:italic; font-size:1.1em;">
+          مستقیم از مبدأ
+        </span>
+      </h1>
+
+      <p id="hero-sub" class="mb-10 max-w-lg mx-auto leading-8" style="color:rgba(245,237,216,0.68); font-size:1.05rem; opacity:0;">
+        بیش از ۲۰ سال تجربه در تأمین آجیل و خشکبار برای فروشگاه‌ها، رستوران‌ها و تولیدکنندگان سراسر ایران
+      </p>
+
+      <div id="hero-btns" class="flex flex-wrap gap-4 justify-center mb-16" style="opacity:0;">
+        <a href="#contact" class="btn-primary">
+          درخواست قیمت عمده
+          <iconify-icon icon="mdi:arrow-left"></iconify-icon>
+        </a>
+        <a href="#products" class="btn-outline">
+          مشاهده محصولات
+        </a>
+      </div>
+
+      <div id="hero-stats" class="grid grid-cols-3 gap-4 max-w-lg mx-auto" style="opacity:0;">
+        <div v-for="stat in stats" :key="stat.label" class="stat-card">
+          <iconify-icon :icon="stat.icon" style="color:#C8972A; font-size:1.4rem; display:block; margin-bottom:0.4rem;"></iconify-icon>
+          <div class="text-cream font-black text-2xl leading-none">{{ stat.display }}{{ stat.suffix }}</div>
+          <div class="mt-1.5" style="color:rgba(245,237,216,0.55); font-size:0.78rem;">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wave bottom -->
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#F5EDD8"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ PRODUCTS ══════════════════════ -->
+  <section id="products" class="py-24 px-6" style="background:#F5EDD8;">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10 reveal">
+        <p class="section-eyebrow mb-3">سبد محصولات</p>
+        <h2 class="text-forest font-black text-4xl mb-4">آنچه تأمین می‌کنیم</h2>
+        <div class="gold-divider mb-8"></div>
+        <!-- Category filter -->
+        <div class="flex flex-wrap gap-2 justify-center">
+          <button v-for="cat in categories" :key="cat.key"
+                  class="cat-pill"
+                  :class="{ active: activeCategory === cat.key }"
+                  @click="activeCategory = cat.key">
+            {{ cat.label }}
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div v-for="product in filteredProducts" :key="product.name"
+             class="product-card reveal">
+          <div class="relative overflow-hidden">
+            <img :src="product.image" :alt="product.name" class="product-card-img" loading="lazy"/>
+            <span v-if="product.badge" class="product-badge">{{ product.badge }}</span>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-earth text-base mb-1">{{ product.name }}</h3>
+            <p class="text-bark/70 text-sm leading-relaxed">{{ product.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ WHY US ══════════════════════ -->
+  <section id="why" class="py-24 px-6" style="background:#EDE3C8;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14 reveal">
+        <p class="section-eyebrow mb-3">مزیت رقابتی</p>
+        <h2 class="text-forest font-black text-4xl mb-4">چرا حسنلویی؟</h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div v-for="item in whyItems" :key="item.title" class="why-card reveal">
+          <div class="why-icon-wrap">
+            <iconify-icon :icon="item.icon" class="why-icon" style="color:#C8972A; font-size:1.5rem;"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="font-bold text-earth text-base mb-1.5">{{ item.title }}</h3>
+            <p class="text-bark/75 text-sm leading-7">{{ item.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ HOW TO ORDER ══════════════════════ -->
+  <section id="steps" class="py-24 px-6 hero-bg relative overflow-hidden">
+    <div class="hero-circle w-96 h-96 -bottom-24 -left-24 opacity-50"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="text-center mb-14 reveal">
+        <p class="section-eyebrow mb-3" style="color:#C8972A;">نحوه ثبت سفارش</p>
+        <h2 class="text-cream font-black text-4xl mb-4">سفارش در ۳ مرحله</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-10">
+        <div v-for="(step, i) in steps" :key="step.num"
+             class="step-card reveal" :style="i > 0 ? '' : ''">
+          <div v-if="i > 0" class="step-connector hidden md:block"></div>
+          <div class="step-num">{{ step.num }}</div>
+          <iconify-icon :icon="step.icon" style="color:#C8972A; font-size:2.5rem; display:block; margin: 1rem auto 0.75rem;"></iconify-icon>
+          <h3 class="text-cream font-bold text-lg mb-2">{{ step.title }}</h3>
+          <p style="color:rgba(245,237,216,0.6); font-size:0.875rem; line-height:1.8;">{{ step.desc }}</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="#contact" class="btn-primary">
+          همین الان شروع کنید
+          <iconify-icon icon="mdi:arrow-left"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ TESTIMONIAL ══════════════════════ -->
+  <section class="py-20 px-6" style="background:#F5EDD8;">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6" style="background:linear-gradient(135deg,#C8972A,#E0B84A);">
+        <iconify-icon icon="mdi:format-quote-open" style="color:#1A2E1A; font-size:1.8rem;"></iconify-icon>
+      </div>
+      <p class="text-earth leading-9 mb-8" style="font-size:1.15rem; font-weight:400;">
+        با حسنلویی بیش از ۷ سال است کار می‌کنم. کیفیت محصولات ثابت، قیمت منصفانه و تحویل به موقع.<br/>بهترین تأمین‌کننده عمده آجیل در ایران.
+      </p>
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#C8972A,#E0B84A);">
+          <iconify-icon icon="mdi:account" style="color:#1A2E1A; font-size:1.2rem;"></iconify-icon>
+        </div>
+        <div class="text-right">
+          <div class="font-bold text-earth text-sm">احمد رضایی</div>
+          <div class="text-bark/60 text-xs">مدیر فروشگاه زنجیره‌ای رضا</div>
+        </div>
+      </div>
+      <!-- Stars -->
+      <div class="flex justify-center gap-1 mt-5">
+        <iconify-icon v-for="n in 5" :key="n" icon="mdi:star" style="color:#C8972A; font-size:1.1rem;"></iconify-icon>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ CONTACT ══════════════════════ -->
+  <section id="contact" class="py-24 px-6" style="background:#EDE3C8;">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-14 reveal">
+        <p class="section-eyebrow mb-3">ارتباط با ما</p>
+        <h2 class="text-forest font-black text-4xl mb-4">سفارش عمده بدهید</h2>
+        <div class="gold-divider mb-5"></div>
+        <p class="text-bark/70 max-w-sm mx-auto text-sm leading-7">
+          برای استعلام قیمت، حداقل سفارش و شرایط تحویل با ما در تماس باشید
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div class="flex flex-col gap-3 reveal">
+          <a v-for="c in contacts" :key="c.label" :href="c.href" class="contact-item group">
+            <div class="contact-icon-wrap" :style="`background:${c.color}1a; border:1px solid ${c.color}40;`">
+              <iconify-icon :icon="c.icon" :style="`color:${c.color}; font-size:1.35rem;`"></iconify-icon>
+            </div>
+            <div class="flex-1">
+              <div class="text-bark/55 text-xs mb-0.5" >{{ c.label }}</div>
+              <div class="text-earth font-bold text-sm" dir="ltr">{{ c.value }}</div>
+            </div>
+            <iconify-icon icon="mdi:arrow-left" style="color:#C8972A; opacity:0; transition:opacity 0.2s;" class="group-hover:opacity-100"></iconify-icon>
+          </a>
+        </div>
+
+        <div class="rounded-2xl p-8 text-center reveal"
+             style="background:linear-gradient(145deg,#1A2E1A,#0F1F0F); border:1.5px solid rgba(200,151,42,0.3);">
+          <div class="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center text-3xl"
+               style="background:rgba(200,151,42,0.15); border:1px solid rgba(200,151,42,0.3);">
+            🌰
+          </div>
+          <h3 class="text-cream font-black text-2xl mb-2">حداقل سفارش ۵۰ کیلوگرم</h3>
+          <div class="gold-divider my-4"></div>
+          <ul class="text-cream/55 text-sm leading-8 mb-7 text-right">
+            <li class="flex items-center gap-2">
+              <iconify-icon icon="mdi:check-circle" style="color:#C8972A; flex-shrink:0;"></iconify-icon>
+              ارسال به سراسر ایران
+            </li>
+            <li class="flex items-center gap-2">
+              <iconify-icon icon="mdi:check-circle" style="color:#C8972A; flex-shrink:0;"></iconify-icon>
+              پرداخت در محل برای مشتریان دائمی
+            </li>
+            <li class="flex items-center gap-2">
+              <iconify-icon icon="mdi:check-circle" style="color:#C8972A; flex-shrink:0;"></iconify-icon>
+              بسته‌بندی اختصاصی با لوگوی شما
+            </li>
+            <li class="flex items-center gap-2">
+              <iconify-icon icon="mdi:check-circle" style="color:#C8972A; flex-shrink:0;"></iconify-icon>
+              ضمانت کیفیت یا مرجوعی رایگان
+            </li>
+          </ul>
+          <a href="tel:+989121234567" class="btn-primary w-full justify-center">
+            <iconify-icon icon="mdi:phone" style="font-size:1.1rem;"></iconify-icon>
+            همین الان تماس بگیرید
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ FOOTER ══════════════════════ -->
+  <footer class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b" style="border-color:rgba(245,237,216,0.1);">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background:linear-gradient(135deg,#C8972A,#E0B84A);">
+            <iconify-icon icon="mdi:leaf" style="color:#1A2E1A; font-size:1.2rem;"></iconify-icon>
+          </div>
+          <div>
+            <div class="text-cream font-black text-base">حسنلویی</div>
+            <div style="color:rgba(245,237,216,0.4); font-size:0.75rem;">آجیل و خشکبار عمده</div>
+          </div>
+        </div>
+
+        <div class="flex gap-6">
+          <a href="#products" class="footer-link">محصولات</a>
+          <a href="#why"      class="footer-link">چرا ما</a>
+          <a href="#steps"    class="footer-link">نحوه سفارش</a>
+          <a href="#contact"  class="footer-link">تماس</a>
+        </div>
+
+        <div class="flex gap-3">
+          <a href="https://instagram.com" class="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
+             style="background:rgba(245,237,216,0.07); border:1px solid rgba(245,237,216,0.12);"
+             onmouseover="this.style.background='rgba(200,151,42,0.2)'; this.style.borderColor='rgba(200,151,42,0.4)';"
+             onmouseout="this.style.background='rgba(245,237,216,0.07)'; this.style.borderColor='rgba(245,237,216,0.12)';">
+            <iconify-icon icon="mdi:instagram" style="color:rgba(245,237,216,0.7); font-size:1.1rem;"></iconify-icon>
+          </a>
+          <a href="https://wa.me/989121234567" class="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
+             style="background:rgba(245,237,216,0.07); border:1px solid rgba(245,237,216,0.12);"
+             onmouseover="this.style.background='rgba(200,151,42,0.2)'; this.style.borderColor='rgba(200,151,42,0.4)';"
+             onmouseout="this.style.background='rgba(245,237,216,0.07)'; this.style.borderColor='rgba(245,237,216,0.12)';">
+            <iconify-icon icon="mdi:whatsapp" style="color:rgba(245,237,216,0.7); font-size:1.1rem;"></iconify-icon>
+          </a>
+          <a href="tel:+989121234567" class="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200"
+             style="background:rgba(245,237,216,0.07); border:1px solid rgba(245,237,216,0.12);"
+             onmouseover="this.style.background='rgba(200,151,42,0.2)'; this.style.borderColor='rgba(200,151,42,0.4)';"
+             onmouseout="this.style.background='rgba(245,237,216,0.07)'; this.style.borderColor='rgba(245,237,216,0.12)';">
+            <iconify-icon icon="mdi:phone" style="color:rgba(245,237,216,0.7); font-size:1.1rem;"></iconify-icon>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-6 text-center" style="color:rgba(245,237,216,0.3); font-size:0.75rem;">
+        © ۱۴۰۴ حسنلویی · تمام حقوق محفوظ است · آجیل و خشکبار عمده
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="./assets/scripts/main.js"></script>
+</body>
+</html>
